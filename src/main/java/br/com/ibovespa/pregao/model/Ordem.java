@@ -6,6 +6,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Ordem {
@@ -27,6 +28,11 @@ public class Ordem {
 	@Enumerated(EnumType.STRING)
 	private StatusOrdem status;
 	
+	@NotNull(message = "CPF deve ser informado.")
+	private String cpf;
+	
+	@NotNull(message = "Corretora deve ser informada.")
+	private String nomeCorretora;
 
 	public Long getId() {
 		return id;
@@ -74,5 +80,21 @@ public class Ordem {
 
 	public void setStatus(StatusOrdem status) {
 		this.status = status;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getNomeCorretora() {
+		return nomeCorretora;
+	}
+
+	public void setNomeCorretora(String nomeCorretora) {
+		this.nomeCorretora = nomeCorretora;
 	}
 }
